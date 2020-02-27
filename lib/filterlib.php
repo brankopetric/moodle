@@ -1450,10 +1450,10 @@ function filter_prepare_phrases_for_filtering(array $linkarray) {
         // If we ony want to match entire words then add \b assertions. However, only
         // do this if the first or last thing in the phrase to match is a word character.
         if ($linkobject->fullmatch) {
-            if (preg_match('~^\w~', $linkobject->workregexp)) {
+            if (preg_match('~^[\p{L}\p{N}_]~', $linkobject->workregexp)) {
                 $linkobject->workregexp = '\b' . $linkobject->workregexp;
             }
-            if (preg_match('~\w$~', $linkobject->workregexp)) {
+            if (preg_match('~[\p{L}\p{N}_]$~', $linkobject->workregexp)) {
                 $linkobject->workregexp = $linkobject->workregexp . '\b';
             }
         }
